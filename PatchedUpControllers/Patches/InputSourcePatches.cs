@@ -6,6 +6,7 @@ using Kitchen;
 using PatchedUpControllers.Saving;
 using PatchedUpControllers.Structs;
 using PatchedUpControllers.Utils;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace PatchedUpControllers.Patches;
@@ -68,7 +69,18 @@ public class InputSource_OnSetBindingString_Patch
                 continue;
 
             foreach (var bindingOverride in overrides)
-                map.FindAction(bindingOverride.Action).ApplyBindingOverride(bindingOverride.Override);
+            {
+                InputAction? action = map.FindAction(bindingOverride.Action);
+
+                if (action is null)
+                {
+                    Debug.Log($"Found invalid action {bindingOverride.Action} in bindings! Skipping...");
+                    continue;
+                }
+                
+                action.ApplyBindingOverride(bindingOverride.Override);
+            }
+                
         }
 
         return false;
