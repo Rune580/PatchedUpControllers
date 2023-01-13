@@ -9,3 +9,6 @@ A collection of patches that aim to improve controller support for the game Plat
 * Bind overrides are saved in a separate file from the profile saves. Uninstall without fear of bricking your save.
 * Added missing sprite paths for certain buttons, such as pressing in your sticks
 * Added workaround in order to prevent your profile from failing to load if a bind override references an invalid InputAction.
+
+
+[Visit Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2916599764)
